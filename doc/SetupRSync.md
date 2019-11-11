@@ -24,7 +24,7 @@ Similar to sftp, rsync by default uses ssh to connect to a remote server and tra
 
 1. Add the contents of the newly generated `/root/.ssh/id_rsa.pub` file from your teslausb pi to the storage server's `~/.ssh/authorized_keys` file. You can do this by connectin via ssh to the archive server from the computer you're using to set up the Pi, editing the `~/.ssh/authorized_keys` in nano, and pasting in the content of the `/root/.ssh/id_rsa.pub` file from the teslausb Pi.
 
-1. Lastly, you will need to authorize the connection to the FTP/Rsync server and test that the key works, so try connecting to the server (through ssh), and **when you are asked if you wish to continue connecting type `yes`** 
+1. Lastly, you will need to authorize the connection to the FTP/Rsync server and test that the key works, so try connecting to the server (through ssh), and **when you are asked if you wish to continue connecting type `yes`**
    ```
    ssh user@archiveserver
    ```
@@ -39,7 +39,7 @@ export RSYNC_USER=<ftp username>
 export RSYNC_SERVER=<ftp IP/host>
 export RSYNC_PATH=<destination path to save in>
 ```
-Explanations for each:  
+Explanations for each:
 * `ARCHIVE_SYSTEM`: `rsync` for enabling rsync
 * `RSYNC_USER`: The user on the FTP server
 * `RSYNC_SERVER`: The IP address/hostname of the destination machine
@@ -52,4 +52,7 @@ export RSYNC_USER=pi
 export RSYNC_SERVER=192.168.1.254
 export RSYNC_PATH=/mnt/PIHDD/TeslaCam/
 ```
+
+Additional options for rsync over ssh can be configured using `~/.ssh/config` such as port number. To see all available options visit [the man page](https://linux.die.net/man/5/ssh_config).
+
 Stay in the `sudo -i` session return to the section "Set up the USB storage functionality" in the [main instructions](../README.md).
